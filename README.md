@@ -1,4 +1,5 @@
 ## A batch record transfer script for Symbiota portals using Python 3, Selenium, and ChromeDriver.
+- Use it, Adjust it, Improve it, at your own risk.
 - Included are a python version of the script, as well as the HTML output of a jupyter notebook explaining it.
 - This script was created to facilitate a bulk transfer of records from one collection to another. 
 - The existing process expects user interaction for each record, which might be considered excessive beyond 50 records. 
