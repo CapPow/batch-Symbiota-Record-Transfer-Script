@@ -8,10 +8,10 @@
 # - It could certinly be improved, but functions as of the date of creation (12/18/2017).
 # - If it 'breaks' I expect the "Xpaths" are fragile with respect to changes in Symbiota. This could be improved with more refined element identification techniques. 
 # - There are specific expected inputs explained below.
-# 
+# - Check the repository for more details (https://github.com/CapPow/batch-Symbiota-Record-Transfer-Script)
+#
 # Calebadampowell@gmail.com
 
-# In[1]:
 
 
 import pandas as pd
@@ -27,14 +27,12 @@ import time
 
 # ## Expected input:
 # 
-# This script expects a .CSV file formatted as the example below.
+# This script expects a .CSV file formatted as the example provided in the repository.
 # 
 # - Such a .CSV can be created at the time a transfer is recieved by using a HID barcode scanner and a spreadsheet program. 
 # - The workflow may be such: scan the old code, tab into the next column, place the new code on top of the old one and scan it into the adjacent field.
-# - Collection codes ("Doner\_Collection\_#", and "Reciever\_Collection\_#") are unique to the portal, if you don't know the codes you can contact your web master or I can help.
+# - Collection codes ("Doner_Collection_#", and "Reciever\_Collection\_#") are unique to the portal, if you don't know the codes you can contact your web master or I can help.
 # - Once obtained, collection codes can be copied down the column (don't type this in for each entry!)
-
-# In[6]:
 
 
 failedToFind = pd.DataFrame()      #build a Dataframe for possible "failure" report
@@ -45,8 +43,6 @@ xferList.head(5)
 # ## Chrome webdriver settings
 # 
 # Some values must be adjusted for this script to function on your computer. Look for the comments in the code to see which 3 need adjusted.
-
-# In[3]:
 
 
 #This path needs altered for the location of chrome's executable.
@@ -69,8 +65,6 @@ time.sleep(2)#this wait may not be necessary, but it seems wise to give chrome a
 # ## The business end:
 # 
 # This is the business end function of the script, I've attempted to comment at each important step so the process is clear and can be improved with minimum effort.
-
-# In[4]:
 
 
 def makeTransfer(row):
@@ -132,9 +126,6 @@ def makeTransfer(row):
 # ## Process handler and clean up:
 # 
 # This calls the makeTransfer function on each record in the CSV file and writes a report if any fail.
-
-# In[5]:
-
 
 for row in range(xferList.shape[0]):
     attempt = makeTransfer(row)
